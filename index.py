@@ -41,11 +41,12 @@ def login(name = None):
 def loginw():
     error = None
     print(request)
+    print("-------------------------------------------------------------------------------------------------------------------")
     if request.method == 'POST':
-        doc_ref = db.collection(u'users').document('request.uid')
-        doc_ref.set({
-            u'first': request
-        })
+        # doc_ref = db.collection(u'users').document('request.uid')
+        # doc_ref.set({
+        #     u'first': request
+        # })
         return "Done"
     # the code below is executed if the request method
     # was GET or the credentials were invalid
