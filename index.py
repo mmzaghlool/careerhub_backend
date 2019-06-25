@@ -44,7 +44,7 @@ def loginw():
     if request.method == 'POST':
         doc_ref = db.collection(u'users').document('request.uid')
         doc_ref.set({
-            request
+            u'first': request
         })
         return "Done"
     # the code below is executed if the request method
