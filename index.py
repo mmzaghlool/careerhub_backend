@@ -36,15 +36,15 @@ def login(name = None):
     return name
 
 @app.route('/login', methods=['POST', 'GET'])
-def login():
+def loginw():
     error = None
     if request.method == 'POST':
-        # doc_ref = db.collection(u'users').document(request.uid)
-        # doc_ref.set({
-        #     u'first': request.first,
-        #     u'last': request.last,
-        #     u'born': request.year
-        # })
+        doc_ref = db.collection(u'users').document(request.uid)
+        doc_ref.set({
+            u'first': request.first,
+            u'last': request.last,
+            u'born': request.year
+        })
         return "Done"
     # the code below is executed if the request method
     # was GET or the credentials were invalid
