@@ -11,7 +11,7 @@ config = {
 firebase = pyrebase.initialize_app(config)
 
 app = Flask(__name__)
-
+db = firebase.database()
 # data to save
 # data = {
 #     "name": "Mortimer 'Morty' Smith"
