@@ -5,5 +5,6 @@ app = Flask(__name__)
 def index():
     return 'Hello, World!'
 
-# if __name__ == "__main__":
-#     app.run()
+@app.route('/user/<name>', methods=['POST'])
+def login(name = None):
+    return name
