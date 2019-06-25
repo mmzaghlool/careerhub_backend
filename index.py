@@ -40,7 +40,7 @@ def login(name = None):
 @app.route('/login', methods=['POST', 'GET'])
 def loginw():
     error = None
-    print request
+    print(request)
     if request.method == 'POST':
         doc_ref = db.collection(u'users').document(request.uid)
         doc_ref.set({
