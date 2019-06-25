@@ -1,32 +1,36 @@
 from flask import Flask
-import pyrebase
-
-config = {
-  "apiKey": "AIzaSyBv7hMsIJJ9RtaHEj7F4dDO2nsdiIUudnY",
-  "authDomain": "aiet-bae93.firebaseapp.com",
-  "databaseURL": "https://aiet-bae93.firebaseio.com",
-  "storageBucket": "aiet-bae93.appspot.com"
-}
-
-firebase = pyrebase.initialize_app(config)
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
 app = Flask(__name__)
-db = firebase.database()
-# data to save
-# data = {
-#     "name": "Mortimer 'Morty' Smith"
+
+# firebaseConfig = {
+#     'apiKey': "AIzaSyBv7hMsIJJ9RtaHEj7F4dDO2nsdiIUudnY",
+#     'authDomain': "aiet-bae93.firebaseapp.com",
+#     'databaseURL': "https://aiet-bae93.firebaseio.com",
+#     'projectId': "aiet-bae93",
+#     'storageBucket': "aiet-bae93.appspot.com",
+#     'messagingSenderId': "204318189072",
+#     'appId': "1:204318189072:web:6a2261ee33dff483"
 # }
 
-# Pass the user's idToken to the push method
-# results = db.child("users").push(data, user['idToken'])
+# Use the application default credentials
+cred = credentials.Certificate('./aiet-bae93-13ecac79617e.json')
+firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+
 @app.route('/')
 def index():
     return 'Hello, World!'
 
-@app.route('/user/<name>', methods=['GET'])
-def login(name = 'None'):
-    data = {
-        "name": name
-    }
-    db.child("users").push(data)
+@app.route('/user/<name>', methods=['POST'])
+def login(name = None):
+    doc_ref = db.collection(u'users').document(name)
+    doc_ref.set({
+        u'first': u'Ada',
+        u'last': u'Lovelace',
+        u'born': 1815
+    })
     return name
