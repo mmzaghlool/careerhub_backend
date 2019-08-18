@@ -1,6 +1,6 @@
-# apturl==0.5.2
+apturl==0.5.2
 asn1crypto==0.24.0
-# Brlapi==0.6.6
+Brlapi==0.6.6
 CacheControl==0.12.5
 cachetools==3.1.1
 certifi==2018.1.18
