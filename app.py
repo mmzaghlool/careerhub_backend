@@ -13,19 +13,10 @@ app.register_blueprint(routes)
 cred = credentials.Certificate('./aiet-bae93-13ecac79617e.json')
 firebase_admin.initialize_app(cred, {"databaseURL": "https://aiet-bae93.firebaseio.com/"})
 
-# db = firestore.client()
 
 @app.route('/')
 def index():
     return 'Hello, World!'
-
-    # doc_ref = db.collection(u'users').document(name)
-    # doc_ref.set({
-    #     u'first': u'Ada',
-    #     u'last': u'Lovelace',
-    #     u'born': 1815
-    # })
-    return "name"
 
 if __name__ == "__main__":
     app.run(debug=True)
