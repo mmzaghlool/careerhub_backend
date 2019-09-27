@@ -10,7 +10,7 @@ app.register_blueprint(routes)
 # app.register_blueprint(auth)
 
 # Use the application default credentials
-cred = credentials.Certificate('./aiet-bae93-13ecac79617e.json')
+cred = credentials.Certificate('./firebase.json')
 firebase_admin.initialize_app(cred, {"databaseURL": "https://aiet-bae93.firebaseio.com/"})
 
 
